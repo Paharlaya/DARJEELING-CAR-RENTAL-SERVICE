@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{NAME}} — {{SUB_NAME}} | Taxi &amp; tour packages, Darjeeling &amp; Sikkim</title>
 <meta name="description" content="Private car and driver across Darjeeling and Sikkim. Nine routes from four to seven days — Gangtok, Pelling, Lachung, Kalimpong, Tsomgo Lake and Tiger Hill at sunrise. WhatsApp us for a price.">
-<meta name="theme-color" content="#050C08">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="canonical" href="index.html">
 <link rel="icon" href="{{BASE}}assets/img/logo.png">
 <link rel="apple-touch-icon" href="{{BASE}}assets/img/logo.png">
@@ -16,9 +16,10 @@
 <meta property="og:image" content="{{BASE}}assets/img/hero/01.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="{{BASE}}assets/css/main.css">
 
 <script type="application/ld+json">
@@ -79,7 +80,7 @@
 
   <!-- Routes: ordered as a ladder of increasing days, so scanning down the
        grid is scanning up in commitment. The order carries information. -->
-  <section class="section section--bone" id="routes">
+  <section class="section" id="routes">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Our routes</p>
@@ -98,8 +99,8 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">The fleet</p>
-        <h2 class="section-head__title display">Six vehicles. All of them ours.</h2>
-        <p class="lede">Serviced here, driven here. We'll match the vehicle to the route and the number of you — the North Sikkim roads want ground clearance, the Darjeeling runs don't.</p>
+        <h2 class="section-head__title display">Six vehicles, matched to the road.</h2>
+        <p class="lede">We'll put you in the right one for the route and the number of you — the North Sikkim roads want ground clearance, the Darjeeling runs don't.</p>
       </div>
 
       <div class="fleet" data-fleet data-specs="{{FLEET_DATA}}">
@@ -109,8 +110,12 @@
             <span class="visually-hidden">Previous vehicle</span>
           </button>
 
+          <!-- The ground box mirrors the vehicle PNG's 900x520 canvas exactly,
+               so the gold ellipse lands under the wheels on every vehicle. -->
           <div class="fleet__viewport">
-            <div class="fleet__ellipse" aria-hidden="true"></div>
+            <div class="fleet__ground" aria-hidden="true">
+              <span class="fleet__ellipse"></span>
+            </div>
             {{FLEET_CARS}}
           </div>
 

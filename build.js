@@ -112,7 +112,9 @@ function terrace(surface, variant = 0) {
     ],
   ];
   const paths = sets[variant % sets.length].map((d) => `<path d="${d}"/>`).join("");
-  return `<div class="terrace terrace--draw terrace--${surface}" aria-hidden="true"><svg viewBox="0 0 1200 80" preserveAspectRatio="none">${paths}</svg></div>`;
+  // White is the base surface, so it needs no modifier class
+  const mod = surface && surface !== "white" ? ` terrace--${surface}` : "";
+  return `<div class="terrace terrace--draw${mod}" aria-hidden="true"><svg viewBox="0 0 1200 80" preserveAspectRatio="none">${paths}</svg></div>`;
 }
 
 /** Route chain — the operator's own G3>D2 notation, drawn.
@@ -347,9 +349,9 @@ function buildIndex(partials) {
     FLEET_DATA: esc(fleetData),
     FLEET_NAME: esc(fleet[0].name),
     FLEET_SPECS: `${esc(fleet[0].type)} · <b>${esc(fleet[0].seats)}</b> · ${esc(fleet[0].bags)} · ${esc(fleet[0].bestFor)}`,
-    TERRACE_1: terrace("bone", 0),
-    TERRACE_2: terrace("ink", 1),
-    TERRACE_3: terrace("forest", 2),
+    TERRACE_1: terrace("white", 0),
+    TERRACE_2: terrace("white", 1),
+    TERRACE_3: terrace("white", 2),
     ROUTE_COUNT: String(packages.length),
   });
 
@@ -395,10 +397,10 @@ function buildItinerary(p, partials) {
     VEHICLE: esc(p.vehicle),
     WA_PKG_URL: waForPackage(p),
     RELATED: related.map((r) => card(r, base)).join("\n"),
-    TERRACE_1: terrace("ink", 1),
-    TERRACE_2: terrace("bone", 2),
-    TERRACE_3: terrace("ink", 0),
-    TERRACE_4: terrace("forest", 1),
+    TERRACE_1: terrace("white", 1),
+    TERRACE_2: terrace("white", 2),
+    TERRACE_3: terrace("white", 0),
+    TERRACE_4: terrace("white", 1),
   });
 
   const file = FILE[p.code];
