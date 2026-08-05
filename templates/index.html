@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{NAME}} — {{SUB_NAME}} | Taxi &amp; tour packages, Darjeeling &amp; Sikkim</title>
-<meta name="description" content="Private car and driver across Darjeeling and Sikkim. Nine routes from four to seven days — Gangtok, Pelling, Lachung, Kalimpong, Tsomgo Lake and Tiger Hill at sunrise. WhatsApp us for a price.">
+<meta name="description" content="Private car and driver across Darjeeling and Sikkim. Tour routes of four to seven days — Gangtok, Pelling, Lachung, Kalimpong, Tsomgo Lake and Tiger Hill at sunrise. WhatsApp us for a price.">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="canonical" href="index.html">
 <link rel="icon" href="{{BASE}}assets/img/logo.png">
@@ -12,14 +12,14 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="{{NAME}} — {{SUB_NAME}}">
-<meta property="og:description" content="Nine routes through Darjeeling and Sikkim, driven by people who know the road.">
+<meta property="og:description" content="Private car and driver across Darjeeling and Sikkim, on routes we drive the year round.">
 <meta property="og:image" content="{{BASE}}assets/img/hero/01.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Tibetan:wght@500&display=swap">
 <link rel="stylesheet" href="{{BASE}}assets/css/main.css">
 
 <script type="application/ld+json">
@@ -48,16 +48,13 @@
 
 <main id="main">
 
-  <!-- Hero: five slides, fixed headline. Centred hero type is the templated
-       default and wastes the left reading edge, so this is left-set. -->
+  <!-- Split hero: type on the left, carousel on the right. The headline gets
+       to be dark on white rather than fighting a photo through a scrim, and
+       the photos display at about half the width a full-bleed hero needs. -->
   <section class="hero" id="hero" data-carousel>
-    <div class="hero__slides">
-      {{HERO_SLIDES}}
-    </div>
-    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap hero__grid">
 
-    <div class="wrap hero__body">
-      <div class="hero__inner">
+      <div class="hero__copy">
         <p class="eyebrow">{{HERO_EYEBROW}}</p>
         <h1 class="hero__title display">{{HERO_HEADLINE}}</h1>
         <p class="hero__sub">{{HERO_SUB}}</p>
@@ -67,12 +64,22 @@
         </div>
       </div>
 
-      <div class="hero__foot">
-        <p class="hero__caption" data-hero-caption aria-live="off">{{HERO_CAPTION}}</p>
-        <div class="hero__nav" role="group" aria-label="Choose a slide">
-          {{HERO_NAV}}
+      <div class="hero__media">
+        <div class="hero__figure">
+          <div class="hero__frame">
+            <div class="hero__slides">
+              {{HERO_SLIDES}}
+            </div>
+          </div>
+        </div>
+        <div class="hero__foot">
+          <p class="hero__caption" data-hero-caption aria-live="off">{{HERO_CAPTION}}</p>
+          <div class="hero__nav" role="group" aria-label="Choose a slide">
+            {{HERO_NAV}}
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -84,7 +91,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">Our routes</p>
-        <h2 class="section-head__title display">{{ROUTE_COUNT}} itineraries, four to seven days.</h2>
+        <h2 class="section-head__title display">Multiple itineraries, four to seven days.</h2>
         <p class="lede">Every route is a private vehicle, yours for the whole trip, with fuel, tolls and parking included. Pick one, or tell us what you'd rather do and we'll build it.</p>
       </div>
       <div class="grid-routes">
@@ -99,7 +106,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">The fleet</p>
-        <h2 class="section-head__title display">Six vehicles, matched to the road.</h2>
+        <h2 class="section-head__title display">Multiple vehicles, matched to the road.</h2>
         <p class="lede">We'll put you in the right one for the route and the number of you — the North Sikkim roads want ground clearance, the Darjeeling runs don't.</p>
       </div>
 
@@ -110,8 +117,9 @@
             <span class="visually-hidden">Previous vehicle</span>
           </button>
 
-          <!-- The ground box mirrors the vehicle PNG's 900x520 canvas exactly,
-               so the gold ellipse lands under the wheels on every vehicle. -->
+          <!-- The viewport carries the PNG's exact 900x520 aspect and the cars
+               fill it, so nothing can drift off-centre and the gold ellipse
+               lands under the wheels on every vehicle. -->
           <div class="fleet__viewport">
             <div class="fleet__ground" aria-hidden="true">
               <span class="fleet__ellipse"></span>

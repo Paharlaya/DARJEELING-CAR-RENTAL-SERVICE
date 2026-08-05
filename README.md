@@ -88,10 +88,20 @@ upscaled — a larger source file would sharpen it up.
 
 ---
 
-## Page names
+## Package labels and page names
 
-The nine itinerary pages are `package-01.html` … `package-09.html`, numbered in
-the order they appear in `packages` (shortest route first).
+Customers see **`PKG-01` … `PKG-09`**, numbered in the order packages appear in
+`packages` (shortest route first). The label matches the filename, so `PKG-07`
+is always `package-07.html`.
+
+The `code` field in `itineraries.json` (`D-04`, `GLD-07`, …) is **internal only
+and never rendered**. It encodes the route and duration, which makes it handy
+for matching a page against your own rate card, so it is worth keeping — but
+changing it will not change anything a customer sees.
+
+Reordering `packages` renumbers both the labels and the filenames. If a page is
+already indexed by Google or shared over WhatsApp, inserting a package above it
+will change its URL — add new packages at the end to avoid that.
 
 `build.js` has a switch near the top:
 

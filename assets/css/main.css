@@ -39,12 +39,17 @@
   --rule-gold-lo: rgba(193, 160, 99, 0.2);
   --rule-on-dark: rgba(193, 160, 99, 0.26);
 
+  /* Softened corners so nothing reads as a hard-edged box */
+  --radius:    12px;
+  --radius-sm: 7px;
+
   /* Type — Spectral is elegant but built for screens, so it stays readable
      at text sizes where a Didone goes spindly. Figtree carries the body on a
      tall x-height. */
   --display: "Spectral", Georgia, "Times New Roman", serif;
   --body:    "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --data:    "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  --tibetan: "Noto Serif Tibetan", "Kokonor", "Microsoft Himalaya", var(--display);
 
   --fs-xs:   0.75rem;
   --fs-sm:   0.8125rem;
@@ -90,8 +95,8 @@ body {
 }
 
 /* The header is opaque now, so content starts below it rather than under it.
-   The +6px is the fret band that sits below the header's inner row. */
-#main { padding-top: calc(var(--header-h) + 6px); }
+   The +2px is the gold rule along its bottom edge. */
+#main { padding-top: calc(var(--header-h) + 2px); }
 
 img, svg { display: block; max-width: 100%; }
 img { height: auto; }
@@ -289,6 +294,7 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid var(--rule-gold);
+  border-radius: var(--radius-sm);
   color: var(--ink);
   background: transparent;
   transition: border-color 0.3s var(--ease), color 0.3s var(--ease),
@@ -333,6 +339,9 @@ button {
   inset: 0 0 auto 0;
   z-index: 100;
   background: var(--white);
+  /* A single straight gold rule. The fret pattern stays in the footer, where
+     it can be decorative without competing with the logo. */
+  border-bottom: 2px solid var(--gold);
   transition: box-shadow 0.4s var(--ease);
 }
 .header.is-scrolled { box-shadow: 0 6px 24px -18px rgba(11, 23, 18, 0.35); }
@@ -355,6 +364,19 @@ button {
 }
 .header.is-scrolled .brand__mark { height: 2.75rem; }
 
+/* Tibetan needs headroom: its glyphs stack vertically below the baseline.
+   Sized fluidly rather than hidden — it only comes off on the narrowest
+   phones, where the logo alone fills the row. */
+.brand__bo {
+  font-family: var(--tibetan);
+  font-size: clamp(0.8rem, 1vw + 0.45rem, 1.15rem);
+  font-weight: 500;
+  line-height: 1.9;
+  color: var(--gold-deep);
+  white-space: nowrap;
+  padding-top: 0.15em;
+}
+
 .header__contact { display: flex; align-items: center; gap: 0.6rem; }
 
 .pill {
@@ -363,6 +385,7 @@ button {
   gap: 0.5rem;
   padding: 0.5rem 0.95rem;
   border: 1px solid var(--rule-gold);
+  border-radius: var(--radius-sm);
   font-family: var(--data);
   font-size: var(--fs-sm);
   letter-spacing: 0.04em;
@@ -380,17 +403,44 @@ button {
 
 /* --- 8. Hero carousel -------------------------------------------------- */
 
-.hero {
-  position: relative;
-  min-height: min(78svh, 40rem);
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--forest);
+/* Split hero: type left, carousel right. The headline is dark on white rather
+   than fighting a photo through a scrim, and the photos display at roughly
+   half the width a full-bleed hero would demand. */
+.hero { background: var(--white); }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
 }
 
-.hero__slides { position: absolute; inset: 0; z-index: -2; }
+.hero__copy { max-width: 36ch; }
+
+.hero__media { position: relative; }
+.hero__figure { position: relative; }
+
+/* A gold hairline offset behind the photo — gold as line, one detail only */
+.hero__figure::before {
+  content: "";
+  position: absolute;
+  inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  border: 1px solid var(--rule-gold);
+  border-radius: var(--radius);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__frame {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper);
+}
+.hero__slides { position: absolute; inset: 0; }
 .hero__slide {
   position: absolute;
   inset: 0;
@@ -408,28 +458,15 @@ button {
   to   { transform: scale(1.06); }
 }
 
-.hero__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(to top, rgba(11, 23, 18, 0.94) 2%, rgba(11, 23, 18, 0.6) 40%, rgba(11, 23, 18, 0.24) 72%, rgba(11, 23, 18, 0.45) 100%),
-    linear-gradient(to right, rgba(11, 23, 18, 0.7) 0%, rgba(11, 23, 18, 0.1) 60%);
-}
-
-.hero__body { padding-block: 4rem 3rem; width: 100%; }
-.hero__inner { max-width: 34ch; }
-.hero .eyebrow { color: var(--gold-hi); }
 .hero__title {
   font-size: var(--fs-hero);
-  color: var(--bone);
+  color: var(--ink);
   margin-block: 1.25rem 1.5rem;
 }
 .hero__sub {
   font-size: var(--fs-md);
-  color: var(--bone);
-  opacity: 0.86;
-  max-width: 40ch;
+  color: var(--ink-soft);
+  max-width: 42ch;
 }
 .hero__actions {
   display: flex;
@@ -437,33 +474,21 @@ button {
   gap: 0.75rem;
   margin-top: 2.25rem;
 }
-.hero .btn { color: var(--bone); border-color: var(--rule-on-dark); }
-.hero .btn:hover { border-color: var(--gold); color: var(--gold-hi); }
-.hero .btn--gold {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--ink);
-  font-weight: 500;
-}
-.hero .btn--gold:hover {
-  background: var(--gold-hi);
-  border-color: var(--gold-hi);
-  color: var(--ink);
-}
 
+/* The carousel's caption and controls sit with the carousel, not the copy */
 .hero__foot {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: var(--gap);
-  margin-top: clamp(2rem, 6vw, 3.5rem);
+  margin-top: 1.15rem;
 }
 .hero__caption {
   font-family: var(--data);
   font-size: var(--fs-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold-hi);
+  color: var(--gold-deep);
   min-height: 1.5em;
 }
 
@@ -473,7 +498,7 @@ button {
   position: relative;
   width: clamp(1.75rem, 4vw, 3rem);
   height: 2px;
-  background: rgba(248, 248, 240, 0.3);
+  background: rgba(11, 23, 18, 0.14);
   overflow: hidden;
   padding: 0;
   border-radius: 0;
@@ -483,7 +508,7 @@ button {
   position: absolute;
   inset: 0 auto 0 0;
   width: 0;
-  background: var(--gold);
+  background: var(--gold-deep);
 }
 .hero__bar[aria-current="true"]::after {
   animation: fill var(--slide-dur) linear forwards;
@@ -502,10 +527,13 @@ button {
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--white);
   border: 1px solid var(--rule-gold-lo);
+  border-radius: var(--radius);
+  overflow: hidden;
   transition: border-color 0.35s var(--ease), transform 0.35s var(--ease),
               box-shadow 0.35s var(--ease);
 }
@@ -517,6 +545,20 @@ button {
 .card:hover .card__img img { transform: scale(1.05); }
 .card:hover .route__dot { transform: scale(1); }
 .card:hover .link-arrow svg { transform: translateX(4px); }
+
+/* Stretched link. The anchor sits on the card title, and its ::after covers
+   the whole card — so the photo, the title and "View route" all navigate,
+   while screen readers still get one link named by the title. */
+.card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.card:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-deep);
+}
 
 .card__img {
   position: relative;
@@ -535,6 +577,7 @@ button {
   top: 0.75rem;
   left: 0.75rem;
   padding: 0.32rem 0.62rem;
+  border-radius: var(--radius-sm);
   background: var(--forest);
   color: var(--gold-hi);
   font-family: var(--data);
@@ -589,10 +632,14 @@ button {
   gap: clamp(0.5rem, 2vw, 2rem);
 }
 
+/* The viewport carries the exact aspect of the normalised 900x520 vehicle PNG
+   and is centred by margin. The cars then simply fill it, so there is no
+   positioning arithmetic to get wrong and nothing can drift off-centre. */
 .fleet__viewport {
   position: relative;
-  aspect-ratio: 16 / 9;
-  max-height: 24rem;
+  width: min(90%, 40rem);
+  margin-inline: auto;
+  aspect-ratio: 900 / 520;
   perspective: 1400px;
 }
 /* The vehicles are white PNGs. On flat white the bodywork disappears, so a
@@ -600,35 +647,28 @@ button {
 .fleet__viewport::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(58% 52% at 50% 62%,
+  inset: -14% -10%;
+  background: radial-gradient(56% 50% at 50% 60%,
               rgba(12, 28, 20, 0.1),
               rgba(12, 28, 20, 0.03) 55%,
               rgba(12, 28, 20, 0) 78%);
   pointer-events: none;
 }
 
-/* Ground and cars share the exact geometry of the normalised 900x520 PNG
-   canvas, so the ellipse lands under the wheels on every vehicle. Centring is
-   done with margin, not transform — the transforms are for the rotation. */
 .fleet__ground,
 .fleet__car {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 7%;
-  margin-inline: auto;
-  width: min(84%, 36rem);
-  aspect-ratio: 900 / 520;
+  inset: 0;
 }
 .fleet__ground { pointer-events: none; }
 
-/* The Ridgeline again — now the ellipse the vehicle stands on */
+/* The Ridgeline again — now the ellipse the vehicle stands on. The wheels sit
+   at 93% of the PNG canvas, so its centre goes at 7% from the bottom. */
 .fleet__ellipse {
   position: absolute;
   left: 50%;
-  bottom: 6%;
-  width: 66%;
+  bottom: 7%;
+  width: 64%;
   aspect-ratio: 6 / 1;
   transform: translate(-50%, 50%);
   border: 1px solid var(--rule-gold);
@@ -678,7 +718,7 @@ button {
 .fleet__arrow svg { width: 1.1rem; }
 
 .fleet__caption {
-  margin-top: 2rem;
+  margin-top: 1.1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -735,6 +775,7 @@ button {
   padding: 0.8rem 0.9rem;
   background: var(--white);
   border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
   color: var(--ink);
   font-family: var(--body);
   font-size: var(--fs-base);
@@ -777,6 +818,7 @@ button {
   display: flex;
   flex-direction: column;
   padding: 1.75rem;
+  border-radius: var(--radius);
   border: 1px solid var(--rule-gold-lo);
   background: var(--paper);
   overflow: hidden;
@@ -814,7 +856,9 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
 
 /* --- 12. Footer -------------------------------------------------------- */
 
-.footer { background: var(--white); }
+/* Deep green anchors the bottom of an otherwise white page, and gives the
+   gold type somewhere to sit at full strength. */
+.footer { background: var(--forest); }
 .footer__inner {
   display: flex;
   align-items: center;
@@ -823,24 +867,38 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
   gap: 1.5rem;
   padding-block: 2.75rem;
 }
-.footer__mark { height: 3.75rem; width: auto; }
+.footer__mark { height: clamp(5rem, 9vw, 7.5rem); width: auto; }
 .footer__nav {
   display: flex;
   gap: 1.75rem;
   font-family: var(--data);
   font-size: var(--fs-sm);
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.footer__nav a { color: var(--ink-soft); transition: color 0.25s var(--ease); }
-.footer__nav a:hover { color: var(--gold-deep); }
+.footer__nav a { color: var(--gold-hi); transition: color 0.25s var(--ease); }
+.footer__nav a:hover { color: var(--bone); }
 .footer__legal {
   font-family: var(--data);
   font-size: var(--fs-xs);
+  font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--ink-mute);
+  color: var(--gold);
   text-align: right;
   line-height: 1.9;
+}
+/* Build credit — quiet, but a real link */
+.footer__credit a {
+  color: var(--gold-hi);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-on-dark);
+  text-underline-offset: 0.25em;
+  transition: color 0.25s var(--ease), text-decoration-color 0.25s var(--ease);
+}
+.footer__credit a:hover {
+  color: var(--bone);
+  text-decoration-color: var(--bone);
 }
 
 /* --- 13. Mobile contact bar ------------------------------------------- */
@@ -1050,6 +1108,7 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
 .days__frame {
   position: relative;
   aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--rule-gold-lo);
   background: var(--paper);
@@ -1079,6 +1138,7 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
 .chip {
   padding: 0.45rem 0.85rem;
   border: 1px solid var(--rule-gold);
+  border-radius: 999px;
   font-family: var(--data);
   font-size: var(--fs-xs);
   letter-spacing: 0.08em;
@@ -1158,12 +1218,22 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
   .enquiry__grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 900px) {
-  :root { --header-h: 4.75rem; }
+/* The phone number label goes first — it frees the most width and the icon
+   still reads as "call". */
+@media (max-width: 1080px) {
   .pill__label { display: none; }
   .pill { padding: 0.55rem; }
+}
+
+@media (max-width: 900px) {
+  :root { --header-h: 4.75rem; }
   .brand__mark { height: 3.25rem; }
   .header.is-scrolled .brand__mark { height: 2.5rem; }
+
+  /* Copy above the carousel — the headline should land first on a phone */
+  .hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero__copy { max-width: 46ch; }
+  .hero__frame { aspect-ratio: 3 / 2; }
 }
 
 /* Two columns collapse and the image moves inside the open day.
@@ -1177,6 +1247,7 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
     aspect-ratio: 3 / 2;
     object-fit: cover;
     border: 1px solid var(--rule-gold-lo);
+    border-radius: var(--radius);
   }
   .day__inline-caption {
     display: block;
@@ -1193,7 +1264,9 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
   .mobile-bar { display: grid; }
   body { padding-bottom: 3.75rem; }
   .header__contact { display: none; }
-  .hero__foot { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  /* The offset hairline hangs past the right edge — drop it on narrow screens */
+  .hero__figure::before { display: none; }
+  .hero__foot { flex-wrap: wrap; gap: 0.75rem 1.25rem; }
   .incl { grid-template-columns: 1fr; }
   .footer__inner { flex-direction: column; align-items: flex-start; }
   .footer__legal { text-align: left; }
@@ -1207,6 +1280,11 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
   .grid-routes { grid-template-columns: 1fr; }
   .form__pair { grid-template-columns: 1fr; }
   .hero__actions .btn { width: 100%; }
+}
+
+@media (max-width: 560px) {
+  /* Below this the logo alone fills the row */
+  .brand__bo { display: none; }
 }
 
 @media (max-width: 380px) {
@@ -1233,4 +1311,6 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
   .day__panel { grid-template-rows: 1fr; }
   .card__body { background: #fff; }
   .card__title, .card__summary { color: #000; }
+  .footer { background: #fff; }
+  .footer__nav a, .footer__legal, .footer__credit a { color: #000; }
 }

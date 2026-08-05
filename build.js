@@ -35,6 +35,18 @@ const pageFile = (p, i) =>
 const FILE = {};
 packages.forEach((p, i) => (FILE[p.code] = pageFile(p, i)));
 
+/**
+ * code -> the label shown to customers: PKG-01 … PKG-09, numbered in the order
+ * packages appear (shortest route first), so the label matches the filename —
+ * PKG-07 is package-07.html.
+ *
+ * The `code` field in itineraries.json (D-04, GLD-07 …) is INTERNAL ONLY and
+ * is never rendered. It carries the route and duration, which makes it useful
+ * for matching a page against your own rate card, so it is worth keeping.
+ */
+const DISPLAY = {};
+packages.forEach((p, i) => (DISPLAY[p.code] = `PKG-${String(i + 1).padStart(2, "0")}`));
+
 /* -- helpers ------------------------------------------------------------- */
 
 const esc = (s) =>
@@ -72,7 +84,7 @@ const WA_GENERAL = waUrl(
 );
 function waForPackage(p) {
   return waUrl(
-    `Hi ${biz.subName} — I'd like to enquire about ${p.code}, ${p.title} (${p.nights}N/${p.days}D). Could you share the price and availability?`
+    `Hi ${biz.subName} — I'd like to enquire about ${DISPLAY[p.code]}, ${p.title} (${p.nights}N/${p.days}D). Could you share the price and availability?`
   );
 }
 
@@ -139,15 +151,16 @@ function routeChain(p, cls = "") {
 
 function card(p, base = "") {
   const href = `${base}itineraries/${FILE[p.code]}`;
+  // One link per card, stretched over the whole card by CSS. The photo, the
+  // title and "View route" are all the same target, and screen readers get a
+  // single link rather than two identical ones.
   return `<article class="card reveal">
-  <a href="${href}" aria-label="${esc(p.title)}, ${p.nights} nights ${p.days} days">
-    <div class="card__img">
-      ${img({ src: p.img, alt: p.alt, base })}
-      <span class="card__code">${esc(p.code)}</span>
-    </div>
-  </a>
+  <div class="card__img">
+    ${img({ src: p.img, alt: p.alt, base })}
+    <span class="card__code">${DISPLAY[p.code]}</span>
+  </div>
   <div class="card__body">
-    <h3 class="card__title display"><a href="${href}">${esc(p.title)}</a></h3>
+    <h3 class="card__title display"><a class="card__link" href="${href}">${esc(p.title)}</a></h3>
     ${routeChain(p)}
     <p class="card__summary">${esc(p.summary)}</p>
     <div class="card__meta">
@@ -240,7 +253,7 @@ function packageOptions(selected) {
   return packages
     .map(
       (p) =>
-        `<option value="${esc(p.code)}"${p.code === selected ? " selected" : ""}>${esc(p.code)} — ${esc(p.title)}</option>`
+        `<option value="${DISPLAY[p.code]}"${DISPLAY[p.code] === selected ? " selected" : ""}>${DISPLAY[p.code]} — ${esc(p.title)}</option>`
     )
     .join("\n          ");
 }
@@ -352,7 +365,6 @@ function buildIndex(partials) {
     TERRACE_1: terrace("white", 0),
     TERRACE_2: terrace("white", 1),
     TERRACE_3: terrace("white", 2),
-    ROUTE_COUNT: String(packages.length),
   });
 
   fs.writeFileSync(path.join(ROOT, "index.html"), html);
@@ -378,7 +390,7 @@ function buildItinerary(p, partials) {
   const html = fill(read("templates/itinerary.html"), {
     ...v,
     ...fill_partials(partials, p),
-    CODE: esc(p.code),
+    CODE: DISPLAY[p.code],
     CANONICAL: FILE[p.code],
     IT_TITLE: esc(p.title),
     SUMMARY: esc(p.summary),
@@ -414,7 +426,7 @@ function fill_partials(partials, p) {
     ...partials,
     ENQUIRY: fill(partials.ENQUIRY_RAW, {
       ...commonVars("../"),
-      PACKAGE_OPTIONS: packageOptions(p ? p.code : null),
+      PACKAGE_OPTIONS: packageOptions(p ? DISPLAY[p.code] : null),
     }),
   };
 }
