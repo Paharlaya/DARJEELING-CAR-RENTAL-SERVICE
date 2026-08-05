@@ -1,0 +1,759 @@
+{
+  "business": {
+    "name": "Darjeeling Car Rental Service",
+    "subName": "Khangri Karpoo",
+    "whatsapp": "919306220309",
+    "phone": "+919306220309",
+    "phoneDisplay": "+91 93062 20309",
+    "email": "PLACEHOLDER@example.com",
+    "emailNote": "Replace with the real address in data/itineraries.json, then run: node build.js",
+    "address": "Victoria Rd, Chauk Bazaar, Darjeeling, West Bengal 734101",
+    "addressShort": "Victoria Rd, Chauk Bazaar, Darjeeling",
+    "mapsUrl": "https://maps.google.com/?q=Victoria+Rd,+Chauk+Bazaar,+Darjeeling,+West+Bengal+734101",
+    "gateway": "Bagdogra / NJP"
+  },
+  "hero": {
+    "eyebrow": "Darjeeling · Gangtok · Pelling · Lachung",
+    "headline": "Khangchendzonga, at four in the morning.",
+    "sub": "Nine routes through Darjeeling and Sikkim, driven by people who know the road.",
+    "slides": [
+      {
+        "img": "assets/img/hero/01.jpg",
+        "caption": "Darjeeling at dawn · Khangchendzonga 8,586 m",
+        "alt": "Darjeeling town at sunrise with the snow-covered Khangchendzonga range on the horizon"
+      },
+      {
+        "img": "assets/img/hero/02.jpg",
+        "caption": "North Sikkim · high-altitude lake",
+        "alt": "A turquoise high-altitude lake in North Sikkim ringed by bare slopes and snow peaks"
+      },
+      {
+        "img": "assets/img/hero/03.jpg",
+        "caption": "Batasia Loop · Darjeeling",
+        "alt": "The Gorkha war memorial and obelisk at Batasia Loop, Darjeeling, with the Indian flag flying"
+      },
+      {
+        "img": "assets/img/hero/04.jpg",
+        "caption": "Buddha Park · Ravangla",
+        "alt": "The golden Buddha statue above the landscaped grounds of Buddha Park in Ravangla, South Sikkim"
+      },
+      {
+        "img": "assets/img/hero/05.jpg",
+        "caption": "Himalayan temple architecture",
+        "alt": "A traditional timber Himalayan temple complex below a ridge of snow-covered peaks"
+      }
+    ]
+  },
+  "fleet": [
+    {
+      "slug": "wagon-r",
+      "name": "Maruti Suzuki Wagon R",
+      "type": "Hatchback",
+      "seats": "4 seats",
+      "bags": "1 bag",
+      "bestFor": "Two travellers, short routes",
+      "img": "assets/img/fleet/wagon-r.png"
+    },
+    {
+      "slug": "swift-dzire",
+      "name": "Maruti Suzuki Swift Dzire",
+      "type": "Sedan",
+      "seats": "4 seats",
+      "bags": "2 bags",
+      "bestFor": "Two to three, sealed roads",
+      "img": "assets/img/fleet/swift-dzire.png"
+    },
+    {
+      "slug": "innova",
+      "name": "Toyota Innova",
+      "type": "MPV",
+      "seats": "6 seats",
+      "bags": "3 bags",
+      "bestFor": "Families of four to six",
+      "img": "assets/img/fleet/innova.png"
+    },
+    {
+      "slug": "innova-crysta",
+      "name": "Toyota Innova Crysta",
+      "type": "MPV",
+      "seats": "6 seats",
+      "bags": "4 bags",
+      "bestFor": "Long routes in comfort",
+      "img": "assets/img/fleet/innova-crysta.png"
+    },
+    {
+      "slug": "bolero",
+      "name": "Mahindra Bolero",
+      "type": "SUV",
+      "seats": "7 seats",
+      "bags": "3 bags",
+      "bestFor": "North Sikkim and rough road",
+      "img": "assets/img/fleet/bolero.png"
+    },
+    {
+      "slug": "sumo-gold",
+      "name": "Tata Sumo Gold",
+      "type": "SUV",
+      "seats": "8 seats",
+      "bags": "3 bags",
+      "bestFor": "Larger groups",
+      "img": "assets/img/fleet/sumo-gold.png"
+    }
+  ],
+  "dayLibrary": {
+    "arrive-gangtok": {
+      "title": "Bagdogra / NJP → Gangtok",
+      "img": "assets/img/hero/05.jpg",
+      "imgCaption": "Himalayan temple architecture",
+      "alt": "A traditional timber Himalayan temple complex below a ridge of snow-covered peaks",
+      "body": [
+        "We meet you at Bagdogra Airport or New Jalpaiguri station and head north. The road follows the Tista almost the whole way — river on one side, terraced hillside on the other — and climbs steadily out of the plains into Sikkim.",
+        "You'll reach Gangtok in the late afternoon. After check-in the evening is yours; M.G. Marg is pedestrianised, lined with cafés, and a ten-minute walk from most hotels in town."
+      ],
+      "facts": "124 KM · 4 HRS · GANGTOK 1,650 M"
+    },
+    "arrive-darjeeling": {
+      "title": "Bagdogra / NJP → Darjeeling",
+      "img": "assets/img/hero/01.jpg",
+      "imgCaption": "Darjeeling at dawn · Khangchendzonga 8,586 m",
+      "alt": "Darjeeling town at sunrise with the snow-covered Khangchendzonga range on the horizon",
+      "body": [
+        "We collect you at Bagdogra or NJP and start the climb through Kurseong, where the tea estates begin and the plains drop away behind you. It is a short drive by Himalayan standards but a steep one, and the temperature falls noticeably as you go.",
+        "Check in with the afternoon still ahead of you. Chowrasta and the Mall are walkable from most of the town, and worth an hour before dinner."
+      ],
+      "facts": "70 KM · 3 HRS · DARJEELING 2,042 M"
+    },
+    "gangtok-sights": {
+      "title": "Gangtok, in full",
+      "img": "assets/img/hero/05.jpg",
+      "imgCaption": "Himalayan temple architecture",
+      "alt": "A traditional timber Himalayan temple complex below a ridge of snow-covered peaks",
+      "body": [
+        "A full day around the town and the ridge above it: Banjhakri Falls and Bakthang Waterfall, Tashi View Point for the range on a clear morning, Gonjang Monastery, and the two hilltop shrines at Ganesh Tok and Hanuman Tok.",
+        "The afternoon covers the Flower Exhibition Centre, the Ropeway across the valley, the Namgyal Institute of Tibetology — one of the best collections of Tibetan manuscripts and thangkas anywhere — and Do Drul Chorten, ringed by its prayer wheels."
+      ],
+      "facts": "FULL DAY · 10 STOPS · IN AND AROUND TOWN"
+    },
+    "tsomgo": {
+      "title": "Tsomgo Lake & Baba Mandir",
+      "img": "assets/img/hero/02.jpg",
+      "imgCaption": "North Sikkim · high-altitude lake",
+      "alt": "A turquoise high-altitude lake in North Sikkim ringed by bare slopes and snow peaks",
+      "body": [
+        "An early start east towards the Nathu La road. Tsomgo sits at 3,753 m, an oval glacial lake about a kilometre long that freezes over in winter and changes colour with the season. We continue to Baba Mandir, then turn back down the same road.",
+        "This is the highest you'll go on most of our routes, and it is felt — take it slowly for the first hour up there and drink more water than you think you need. Nathu La can be added if permits are available; ask us at least two days ahead."
+      ],
+      "facts": "55 KM EACH WAY · 3,753 M · PERMIT REQUIRED"
+    },
+    "gangtok-to-darjeeling": {
+      "title": "Gangtok → Darjeeling",
+      "img": "assets/img/hero/01.jpg",
+      "imgCaption": "Darjeeling at dawn · Khangchendzonga 8,586 m",
+      "alt": "Darjeeling town at sunrise with the snow-covered Khangchendzonga range on the horizon",
+      "body": [
+        "West out of Sikkim, back down to the Tista, across at Melli and up the other side into West Bengal. The road changes character completely on the far bank — from river gorge to tea garden within an hour.",
+        "You'll be in Darjeeling by mid-afternoon with time to settle in before an early night, because tomorrow starts at four."
+      ],
+      "facts": "100 KM · 4 HRS · DARJEELING 2,042 M"
+    },
+    "gangtok-sights-to-darjeeling": {
+      "title": "Gangtok sights, then → Darjeeling",
+      "img": "assets/img/hero/01.jpg",
+      "imgCaption": "Darjeeling at dawn · Khangchendzonga 8,586 m",
+      "alt": "Darjeeling town at sunrise with the snow-covered Khangchendzonga range on the horizon",
+      "body": [
+        "A compressed morning in Gangtok before you leave it: Banjhakri Falls, the Flower Exhibition Centre, the Ropeway, the Namgyal Institute of Tibetology and Do Drul Chorten. Enough to know the town rather than pass through it.",
+        "We set off for Darjeeling after lunch, down to the Tista and across at Melli. You'll arrive with the evening free — and an early night is a good idea, because tomorrow starts at four."
+      ],
+      "facts": "MORNING IN TOWN · THEN 100 KM · 4 HRS"
+    },
+    "gangtok-to-kalimpong": {
+      "title": "Gangtok sights, then → Kalimpong",
+      "img": "assets/img/hero/05.jpg",
+      "imgCaption": "Himalayan temple architecture",
+      "alt": "A traditional timber Himalayan temple complex below a ridge of snow-covered peaks",
+      "body": [
+        "The morning goes to Gangtok — Banjhakri Falls, the Flower Exhibition Centre, the Ropeway, the Namgyal Institute of Tibetology and Do Drul Chorten — and then we drive south to Kalimpong.",
+        "It is a short run, down to the river and up onto the ridge on the far side. Kalimpong sits lower and warmer than Darjeeling, and feels like a town that works for a living rather than one that receives visitors."
+      ],
+      "facts": "MORNING IN TOWN · THEN 75 KM · 2.5 HRS"
+    },
+    "kalimpong-to-darjeeling": {
+      "title": "Kalimpong, then → Darjeeling",
+      "img": "assets/img/hero/03.jpg",
+      "imgCaption": "Batasia Loop · Darjeeling",
+      "alt": "The Gorkha war memorial and obelisk at Batasia Loop, Darjeeling, with the Indian flag flying",
+      "body": [
+        "A morning in Kalimpong: Deolo Hill for the view down both valleys, Durpin Monastery on the ridge, Science City, and one of the orchid nurseries the town has traded on for a century.",
+        "After lunch we climb to Darjeeling — fifty kilometres, but two hours of it, and the last stretch through tea gardens. Early night; Tiger Hill means a four o'clock start."
+      ],
+      "facts": "MORNING IN TOWN · THEN 50 KM · 2 HRS"
+    },
+    "gangtok-to-pelling": {
+      "title": "Gangtok → Namchi → Ravangla → Pelling",
+      "img": "assets/img/hero/04.jpg",
+      "imgCaption": "Buddha Park · Ravangla",
+      "alt": "The golden Buddha statue above the landscaped grounds of Buddha Park in Ravangla, South Sikkim",
+      "body": [
+        "The long way west, and the better one. First Namchi, where the Chardham complex holds a 33 m Shiva above replicas of the four great pilgrimage temples. Then Ravangla, and the 40 m gilded Buddha standing over a park laid out along the ridge.",
+        "Both are worth the stop rather than the photograph. We reach Pelling in the evening — on a clear day the Khangchendzonga range is directly in front of your hotel."
+      ],
+      "facts": "135 KM · 6 HRS · PELLING 2,150 M"
+    },
+    "pelling-sights": {
+      "title": "Pelling and around",
+      "img": "assets/img/hero/04.jpg",
+      "imgCaption": "Buddha Park · Ravangla",
+      "alt": "The golden Buddha statue above the landscaped grounds of Buddha Park in Ravangla, South Sikkim",
+      "body": [
+        "Start with the SkyWalk — a glass walkway out over the drop beneath the Chenrezig statue, and not for everyone. Then Rimbi Waterfalls and Khecheopalri Lake, which local belief holds is kept clear of fallen leaves by the birds.",
+        "The afternoon belongs to two things standing side by side: Pemayangtse Monastery, founded in 1705 and still one of the most important in Sikkim, and the ruins of Rabdentse, the kingdom's second capital, at the end of a short walk through forest."
+      ],
+      "facts": "FULL DAY · 6 STOPS · PEMAYANGTSE 1705"
+    },
+    "gangtok-to-lachung": {
+      "title": "Gangtok → Lachung",
+      "img": "assets/img/hero/02.jpg",
+      "imgCaption": "North Sikkim · high-altitude lake",
+      "alt": "A turquoise high-altitude lake in North Sikkim ringed by bare slopes and snow peaks",
+      "body": [
+        "North Sikkim proper. Six hours for a hundred and twenty kilometres, which tells you what the road is like — Singhik for the view up the Tista gorge, then the Seven Sisters and Naga waterfalls, both of them right beside the highway.",
+        "Lachung is a village at 2,700 m where two rivers meet, and it gets cold after dark in every season. Bring a layer more than you think you need. Rooms here are simple by design; the valley is the point."
+      ],
+      "facts": "120 KM · 6 HRS · LACHUNG 2,700 M"
+    },
+    "yumthang-to-gangtok": {
+      "title": "Yumthang Valley, then → Gangtok",
+      "img": "assets/img/hero/02.jpg",
+      "imgCaption": "North Sikkim · high-altitude lake",
+      "alt": "A turquoise high-altitude lake in North Sikkim ringed by bare slopes and snow peaks",
+      "body": [
+        "An early run up to Yumthang, the Valley of Flowers, at 3,564 m — a wide flat-bottomed valley with a river down the middle and peaks on three sides. Between April and June the rhododendrons make the name obvious; the rest of the year it is bare and quiet and just as good.",
+        "There are hot springs a short walk across the river. We come back down to Lachung for lunch and continue to Gangtok, arriving in the evening."
+      ],
+      "facts": "25 KM UP · 3,564 M · THEN 120 KM BACK"
+    },
+    "darjeeling-sights": {
+      "title": "Tiger Hill, then the town",
+      "img": "assets/img/hero/01.jpg",
+      "imgCaption": "Khangchendzonga at dawn, from Darjeeling",
+      "alt": "The Khangchendzonga range catching first light above Darjeeling",
+      "body": [
+        "We leave at four. Tiger Hill is 2,590 m and about forty minutes out, and on a clear morning Khangchendzonga catches the light a good while before the valley does — first pink, then white. On the clearest days you can pick out Everest to the west.",
+        "Coming back we stop at Ghoom Monastery and at Batasia Loop, where the toy train turns a full circle around the Gorkha war memorial. After breakfast: the Himalayan Mountaineering Institute, the Padmaja Naidu zoological park next door, the Ropeway, Tenzing Rock, a working tea garden, and the Japanese Peace Pagoda to close the day."
+      ],
+      "facts": "DEPART 4:00 AM · TIGER HILL 2,590 M"
+    },
+    "mirik": {
+      "title": "Mirik & the Nepal border",
+      "img": "assets/img/hero/01.jpg",
+      "imgCaption": "Darjeeling at dawn · Khangchendzonga 8,586 m",
+      "alt": "Darjeeling town at sunrise with the snow-covered Khangchendzonga range on the horizon",
+      "body": [
+        "South through pine forest and tea estate to Mirik, where the lake sits in a bowl of cypress with a footbridge across the middle and a path all the way round it.",
+        "We carry on to the Simana and Gopaldhara viewpoints, then to Pashupati Market, which is over the line in Nepal. Carry cash and a photo ID; crossing is routine but the shops are not set up for cards."
+      ],
+      "facts": "50 KM · 2 HRS · MIRIK 1,495 M"
+    },
+    "depart-gangtok": {
+      "title": "Gangtok → Bagdogra / NJP",
+      "img": "assets/img/hero/05.jpg",
+      "imgCaption": "Himalayan temple architecture",
+      "alt": "A traditional timber Himalayan temple complex below a ridge of snow-covered peaks",
+      "body": [
+        "Check out after breakfast and back down the Tista to Bagdogra or NJP. Tell us your flight or train time the evening before and we will set the departure with real margin — the road is good but it is a mountain road, and it does not like being hurried."
+      ],
+      "facts": "124 KM · 4 HRS · ALLOW MARGIN"
+    },
+    "depart-darjeeling": {
+      "title": "Darjeeling → Bagdogra / NJP",
+      "img": "assets/img/hero/01.jpg",
+      "imgCaption": "Darjeeling at dawn · Khangchendzonga 8,586 m",
+      "alt": "Darjeeling town at sunrise with the snow-covered Khangchendzonga range on the horizon",
+      "body": [
+        "Down through Kurseong and the tea gardens to Bagdogra or NJP. Give us your flight or train time the night before and we will set the departure with real margin — the descent is quicker than the climb, but not by as much as people expect."
+      ],
+      "facts": "70 KM · 3 HRS · ALLOW MARGIN"
+    },
+    "depart-pelling": {
+      "title": "Pelling → Bagdogra / NJP",
+      "img": "assets/img/hero/04.jpg",
+      "imgCaption": "Buddha Park · Ravangla",
+      "alt": "The golden Buddha statue above the landscaped grounds of Buddha Park in Ravangla, South Sikkim",
+      "body": [
+        "Out of West Sikkim and down to the plains — a longer run than the Gangtok departure, so we usually start earlier. Confirm your flight or train time with us the evening before and we will work back from it."
+      ],
+      "facts": "130 KM · 5 HRS · START EARLY"
+    }
+  },
+  "packages": [
+    {
+      "code": "D-04",
+      "slug": "d-04",
+      "title": "4 Days Darjeeling",
+      "shortTitle": "Darjeeling",
+      "nights": 3,
+      "days": 4,
+      "notation": "D3",
+      "stays": [
+        {
+          "place": "Darjeeling",
+          "nights": 3
+        }
+      ],
+      "img": "assets/img/hero/01.jpg",
+      "alt": "Darjeeling town at dawn with the Khangchendzonga range beyond",
+      "summary": "The shortest way to do Darjeeling properly — Tiger Hill at sunrise, the town over a full day, and Mirik and the Nepal border on the third.",
+      "metaDescription": "4 days in Darjeeling with a private car and driver: Tiger Hill sunrise, Ghoom Monastery, Batasia Loop, the town, Mirik Lake and the Indo-Nepal border.",
+      "highlights": [
+        "Khangchendzonga sunrise from Tiger Hill",
+        "Ghoom Monastery and Batasia Loop",
+        "Mirik Lake and the Nepal border"
+      ],
+      "places": [
+        "Darjeeling",
+        "Tiger Hill",
+        "Ghoom Monastery",
+        "Batasia Loop",
+        "Himalayan Mountaineering Institute",
+        "Padmaja Naidu Zoological Park",
+        "Ropeway",
+        "Tenzing Rock",
+        "Japanese Peace Pagoda",
+        "Mirik Lake",
+        "Simana Viewpoint",
+        "Pashupati Market"
+      ],
+      "vehicle": "Wagon R or Swift Dzire for two, Innova for four or more",
+      "itinerary": [
+        "arrive-darjeeling",
+        "darjeeling-sights",
+        "mirik",
+        "depart-darjeeling"
+      ]
+    },
+    {
+      "code": "G-04",
+      "slug": "g-04",
+      "title": "4 Days Gangtok",
+      "shortTitle": "Gangtok",
+      "nights": 3,
+      "days": 4,
+      "notation": "G3",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 3
+        }
+      ],
+      "img": "assets/img/hero/02.jpg",
+      "alt": "A high-altitude lake in Sikkim ringed by bare slopes and snow peaks",
+      "summary": "Gangtok at an unhurried pace: a full day in and around the town, and a full day up at Tsomgo Lake.",
+      "metaDescription": "4 days in Gangtok with a private car and driver: full-day town sightseeing, Tsomgo Lake and Baba Mandir at 3,753 m, and both airport transfers.",
+      "highlights": [
+        "Tsomgo Lake at 3,753 m",
+        "Ten stops across Gangtok in a day",
+        "Namgyal Institute of Tibetology"
+      ],
+      "places": [
+        "Gangtok",
+        "Banjhakri Falls",
+        "Bakthang Waterfall",
+        "Tashi View Point",
+        "Gonjang Monastery",
+        "Ganesh Tok",
+        "Hanuman Tok",
+        "Flower Exhibition Centre",
+        "Ropeway",
+        "Namgyal Institute of Tibetology",
+        "Do Drul Chorten",
+        "Tsomgo Lake",
+        "Baba Mandir"
+      ],
+      "vehicle": "Wagon R or Swift Dzire for two, Innova for four or more",
+      "itinerary": [
+        "arrive-gangtok",
+        "gangtok-sights",
+        "tsomgo",
+        "depart-gangtok"
+      ]
+    },
+    {
+      "code": "GD-05",
+      "slug": "gd-05",
+      "title": "5 Days Gangtok & Darjeeling",
+      "shortTitle": "Gangtok & Darjeeling",
+      "nights": 4,
+      "days": 5,
+      "notation": "G2>D2",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 2
+        },
+        {
+          "place": "Darjeeling",
+          "nights": 2
+        }
+      ],
+      "img": "assets/img/hero/01.jpg",
+      "alt": "Darjeeling town at dawn with the Khangchendzonga range beyond",
+      "summary": "Both hill stations in five days, with Tsomgo Lake on one end and Tiger Hill on the other. The most-asked-for route we run.",
+      "metaDescription": "5 days across Gangtok and Darjeeling with a private car and driver: Tsomgo Lake, Gangtok sightseeing, Tiger Hill sunrise and the Darjeeling town tour.",
+      "highlights": [
+        "Tsomgo Lake at 3,753 m",
+        "Tiger Hill sunrise",
+        "Two hill stations, one vehicle"
+      ],
+      "places": [
+        "Gangtok",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Banjhakri Falls",
+        "Namgyal Institute of Tibetology",
+        "Do Drul Chorten",
+        "Darjeeling",
+        "Tiger Hill",
+        "Ghoom Monastery",
+        "Batasia Loop",
+        "Himalayan Mountaineering Institute",
+        "Japanese Peace Pagoda"
+      ],
+      "vehicle": "Swift Dzire for two, Innova or Crysta for four or more",
+      "itinerary": [
+        "arrive-gangtok",
+        "tsomgo",
+        "gangtok-sights-to-darjeeling",
+        "darjeeling-sights",
+        "depart-darjeeling"
+      ]
+    },
+    {
+      "code": "GP-05",
+      "slug": "gp-05",
+      "title": "5 Days Gangtok & Pelling",
+      "shortTitle": "Gangtok & Pelling",
+      "nights": 4,
+      "days": 5,
+      "notation": "G2>P2",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 2
+        },
+        {
+          "place": "Pelling",
+          "nights": 2
+        }
+      ],
+      "img": "assets/img/hero/04.jpg",
+      "alt": "The golden Buddha at Buddha Park, Ravangla, visited on the way to Pelling",
+      "summary": "East to west across Sikkim, taking in Tsomgo Lake, the giant statues at Namchi and Ravangla, and Pelling's monasteries.",
+      "metaDescription": "5 days across Gangtok and Pelling with a private car and driver: Tsomgo Lake, Chardham at Namchi, Buddha Park at Ravangla, Pemayangtse Monastery and the Pelling SkyWalk.",
+      "highlights": [
+        "Tsomgo Lake at 3,753 m",
+        "Chardham and Buddha Park en route",
+        "Pemayangtse Monastery and Rabdentse"
+      ],
+      "places": [
+        "Gangtok",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Namchi Chardham",
+        "Ravangla Buddha Park",
+        "Pelling",
+        "SkyWalk",
+        "Chenrezig Statue",
+        "Rimbi Waterfalls",
+        "Pemayangtse Monastery",
+        "Rabdentse Ruins",
+        "Khecheopalri Lake"
+      ],
+      "vehicle": "Swift Dzire for two, Innova or Crysta for four or more",
+      "itinerary": [
+        "arrive-gangtok",
+        "tsomgo",
+        "gangtok-to-pelling",
+        "pelling-sights",
+        "depart-pelling"
+      ]
+    },
+    {
+      "code": "GL-05",
+      "slug": "gl-05",
+      "title": "5 Days Gangtok & Lachung",
+      "shortTitle": "Gangtok & Lachung",
+      "nights": 4,
+      "days": 5,
+      "notation": "G3>L1",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 3
+        },
+        {
+          "place": "Lachung",
+          "nights": 1
+        }
+      ],
+      "img": "assets/img/hero/02.jpg",
+      "alt": "A high-altitude lake in Sikkim ringed by bare slopes and snow peaks",
+      "summary": "The North Sikkim run. Tsomgo Lake, the long road to Lachung, and the Yumthang Valley at 3,564 m.",
+      "metaDescription": "5 days from Gangtok to Lachung and the Yumthang Valley with a private car and driver: Tsomgo Lake, Seven Sisters Waterfall, Singhik and the Valley of Flowers.",
+      "highlights": [
+        "Yumthang Valley at 3,564 m",
+        "Tsomgo Lake at 3,753 m",
+        "Seven Sisters and Naga waterfalls"
+      ],
+      "places": [
+        "Gangtok",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Singhik Viewpoint",
+        "Seven Sisters Waterfall",
+        "Naga Waterfall",
+        "Lachung",
+        "Yumthang Valley",
+        "Hot Springs"
+      ],
+      "vehicle": "Bolero, Sumo Gold or Innova — North Sikkim roads need the clearance",
+      "itinerary": [
+        "arrive-gangtok",
+        "tsomgo",
+        "gangtok-to-lachung",
+        "yumthang-to-gangtok",
+        "depart-gangtok"
+      ]
+    },
+    {
+      "code": "GKD-06",
+      "slug": "gkd-06",
+      "title": "6 Days Gangtok · Kalimpong · Darjeeling",
+      "shortTitle": "Gangtok, Kalimpong & Darjeeling",
+      "nights": 5,
+      "days": 6,
+      "notation": "G2>K1>D2",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 2
+        },
+        {
+          "place": "Kalimpong",
+          "nights": 1
+        },
+        {
+          "place": "Darjeeling",
+          "nights": 2
+        }
+      ],
+      "img": "assets/img/hero/03.jpg",
+      "alt": "The Gorkha war memorial at Batasia Loop, Darjeeling",
+      "summary": "Three hill towns in six days, with a night in Kalimpong breaking the drive between Gangtok and Darjeeling.",
+      "metaDescription": "6 days across Gangtok, Kalimpong and Darjeeling with a private car and driver: Tsomgo Lake, Deolo Hill, Durpin Monastery, Tiger Hill sunrise and the Darjeeling town tour.",
+      "highlights": [
+        "Three hill towns, one vehicle",
+        "Tsomgo Lake at 3,753 m",
+        "Tiger Hill sunrise"
+      ],
+      "places": [
+        "Gangtok",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Kalimpong",
+        "Deolo Hill",
+        "Durpin Monastery",
+        "Science City",
+        "Orchid nurseries",
+        "Darjeeling",
+        "Tiger Hill",
+        "Ghoom Monastery",
+        "Batasia Loop"
+      ],
+      "vehicle": "Swift Dzire for two, Innova or Crysta for four or more",
+      "itinerary": [
+        "arrive-gangtok",
+        "tsomgo",
+        "gangtok-to-kalimpong",
+        "kalimpong-to-darjeeling",
+        "darjeeling-sights",
+        "depart-darjeeling"
+      ]
+    },
+    {
+      "code": "GD-06",
+      "slug": "gd-06",
+      "title": "6 Days Gangtok & Darjeeling",
+      "shortTitle": "Gangtok & Darjeeling",
+      "nights": 5,
+      "days": 6,
+      "notation": "G3>D2",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 3
+        },
+        {
+          "place": "Darjeeling",
+          "nights": 2
+        }
+      ],
+      "img": "assets/img/hero/01.jpg",
+      "alt": "Darjeeling town at dawn with the Khangchendzonga range beyond",
+      "summary": "The five-day route with a day put back where it is missed most — a full day for Gangtok instead of a rushed morning.",
+      "metaDescription": "6 days across Gangtok and Darjeeling with a private car and driver: full-day Gangtok sightseeing, Tsomgo Lake, Tiger Hill sunrise and the Darjeeling town tour.",
+      "highlights": [
+        "A full day for Gangtok, not a morning",
+        "Tsomgo Lake at 3,753 m",
+        "Tiger Hill sunrise"
+      ],
+      "places": [
+        "Gangtok",
+        "Banjhakri Falls",
+        "Tashi View Point",
+        "Ganesh Tok",
+        "Namgyal Institute of Tibetology",
+        "Do Drul Chorten",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Darjeeling",
+        "Tiger Hill",
+        "Ghoom Monastery",
+        "Batasia Loop",
+        "Japanese Peace Pagoda"
+      ],
+      "vehicle": "Swift Dzire for two, Innova or Crysta for four or more",
+      "itinerary": [
+        "arrive-gangtok",
+        "gangtok-sights",
+        "tsomgo",
+        "gangtok-to-darjeeling",
+        "darjeeling-sights",
+        "depart-darjeeling"
+      ]
+    },
+    {
+      "code": "GP-06",
+      "slug": "gp-06",
+      "title": "6 Days Gangtok & Pelling",
+      "shortTitle": "Gangtok & Pelling",
+      "nights": 5,
+      "days": 6,
+      "notation": "G3>P2",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 3
+        },
+        {
+          "place": "Pelling",
+          "nights": 2
+        }
+      ],
+      "img": "assets/img/hero/04.jpg",
+      "alt": "The golden Buddha at Buddha Park, Ravangla, visited on the way to Pelling",
+      "summary": "Sikkim end to end without hurrying: a full day in Gangtok, a day at Tsomgo, and two nights under the range at Pelling.",
+      "metaDescription": "6 days across Gangtok and Pelling with a private car and driver: full-day Gangtok sightseeing, Tsomgo Lake, Chardham, Buddha Park, Pemayangtse Monastery and the SkyWalk.",
+      "highlights": [
+        "A full day for Gangtok",
+        "Tsomgo Lake at 3,753 m",
+        "Pemayangtse Monastery and Rabdentse"
+      ],
+      "places": [
+        "Gangtok",
+        "Banjhakri Falls",
+        "Tashi View Point",
+        "Namgyal Institute of Tibetology",
+        "Do Drul Chorten",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Namchi Chardham",
+        "Ravangla Buddha Park",
+        "Pelling",
+        "SkyWalk",
+        "Pemayangtse Monastery",
+        "Rabdentse Ruins",
+        "Khecheopalri Lake"
+      ],
+      "vehicle": "Swift Dzire for two, Innova or Crysta for four or more",
+      "itinerary": [
+        "arrive-gangtok",
+        "gangtok-sights",
+        "tsomgo",
+        "gangtok-to-pelling",
+        "pelling-sights",
+        "depart-pelling"
+      ]
+    },
+    {
+      "code": "GLD-07",
+      "slug": "gld-07",
+      "title": "7 Days Gangtok · Lachung · Darjeeling",
+      "shortTitle": "Gangtok, Lachung & Darjeeling",
+      "nights": 6,
+      "days": 7,
+      "notation": "G3>L1>D2",
+      "stays": [
+        {
+          "place": "Gangtok",
+          "nights": 3
+        },
+        {
+          "place": "Lachung",
+          "nights": 1
+        },
+        {
+          "place": "Darjeeling",
+          "nights": 2
+        }
+      ],
+      "img": "assets/img/hero/02.jpg",
+      "alt": "A high-altitude lake in Sikkim ringed by bare slopes and snow peaks",
+      "summary": "Everything we run, in one week: Tsomgo Lake, North Sikkim as far as Yumthang, and Darjeeling to finish.",
+      "metaDescription": "7 days across Gangtok, Lachung and Darjeeling with a private car and driver: Tsomgo Lake, Yumthang Valley at 3,564 m, Tiger Hill sunrise and the Darjeeling town tour.",
+      "highlights": [
+        "Yumthang Valley at 3,564 m",
+        "Tsomgo Lake at 3,753 m",
+        "Tiger Hill sunrise to finish"
+      ],
+      "places": [
+        "Gangtok",
+        "Tsomgo Lake",
+        "Baba Mandir",
+        "Singhik Viewpoint",
+        "Seven Sisters Waterfall",
+        "Lachung",
+        "Yumthang Valley",
+        "Hot Springs",
+        "Namgyal Institute of Tibetology",
+        "Darjeeling",
+        "Tiger Hill",
+        "Ghoom Monastery",
+        "Batasia Loop"
+      ],
+      "vehicle": "Bolero, Sumo Gold or Innova — North Sikkim roads need the clearance",
+      "itinerary": [
+        "arrive-gangtok",
+        "tsomgo",
+        "gangtok-to-lachung",
+        "yumthang-to-gangtok",
+        "gangtok-sights-to-darjeeling",
+        "darjeeling-sights",
+        "depart-darjeeling"
+      ]
+    }
+  ],
+  "included": [
+    "Private vehicle for the whole route, exclusively yours",
+    "Fuel, tolls, parking and driver allowance",
+    "All airport and station transfers",
+    "Sightseeing on every day listed above",
+    "Driver who lives and drives here year-round"
+  ],
+  "excluded": [
+    "Hotels and meals",
+    "Entry fees, permits and camera charges",
+    "Nathu La and other add-ons arranged on request",
+    "Anything not listed under what's included"
+  ]
+}

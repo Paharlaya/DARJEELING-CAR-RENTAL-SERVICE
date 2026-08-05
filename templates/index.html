@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{NAME}} — {{SUB_NAME}} | Taxi &amp; tour packages, Darjeeling &amp; Sikkim</title>
+<meta name="description" content="Private car and driver across Darjeeling and Sikkim. Nine routes from four to seven days — Gangtok, Pelling, Lachung, Kalimpong, Tsomgo Lake and Tiger Hill at sunrise. WhatsApp us for a price.">
+<meta name="theme-color" content="#050C08">
+<link rel="canonical" href="index.html">
+<link rel="icon" href="{{BASE}}assets/img/logo.png">
+<link rel="apple-touch-icon" href="{{BASE}}assets/img/logo.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{NAME}} — {{SUB_NAME}}">
+<meta property="og:description" content="Nine routes through Darjeeling and Sikkim, driven by people who know the road.">
+<meta property="og:image" content="{{BASE}}assets/img/hero/01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="{{BASE}}assets/css/main.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TaxiService",
+  "name": "{{NAME}} — {{SUB_NAME}}",
+  "telephone": "{{PHONE}}",
+  "email": "{{EMAIL}}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Victoria Rd, Chauk Bazaar",
+    "addressLocality": "Darjeeling",
+    "addressRegion": "West Bengal",
+    "postalCode": "734101",
+    "addressCountry": "IN"
+  },
+  "areaServed": ["Darjeeling", "Gangtok", "Pelling", "Lachung", "Kalimpong", "Sikkim"],
+  "image": "{{BASE}}assets/img/logo.png"
+}
+</script>
+</head>
+<body>
+
+{{HEADER}}
+
+<main id="main">
+
+  <!-- Hero: five slides, fixed headline. Centred hero type is the templated
+       default and wastes the left reading edge, so this is left-set. -->
+  <section class="hero" id="hero" data-carousel>
+    <div class="hero__slides">
+      {{HERO_SLIDES}}
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="wrap hero__body">
+      <div class="hero__inner">
+        <p class="eyebrow">{{HERO_EYEBROW}}</p>
+        <h1 class="hero__title display">{{HERO_HEADLINE}}</h1>
+        <p class="hero__sub">{{HERO_SUB}}</p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="{{WA_URL}}" target="_blank" rel="noopener">{{ICON_WA}} WhatsApp us</a>
+          <a class="btn" href="#routes">See the routes</a>
+        </div>
+      </div>
+
+      <div class="hero__foot">
+        <p class="hero__caption" data-hero-caption aria-live="off">{{HERO_CAPTION}}</p>
+        <div class="hero__nav" role="group" aria-label="Choose a slide">
+          {{HERO_NAV}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_1}}
+
+  <!-- Routes: ordered as a ladder of increasing days, so scanning down the
+       grid is scanning up in commitment. The order carries information. -->
+  <section class="section section--bone" id="routes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Our routes</p>
+        <h2 class="section-head__title display">{{ROUTE_COUNT}} itineraries, four to seven days.</h2>
+        <p class="lede">Every route is a private vehicle, yours for the whole trip, with fuel, tolls and parking included. Pick one, or tell us what you'd rather do and we'll build it.</p>
+      </div>
+      <div class="grid-routes">
+        {{CARDS}}
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_2}}
+
+  <section class="section" id="fleet">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The fleet</p>
+        <h2 class="section-head__title display">Six vehicles. All of them ours.</h2>
+        <p class="lede">Serviced here, driven here. We'll match the vehicle to the route and the number of you — the North Sikkim roads want ground clearance, the Darjeeling runs don't.</p>
+      </div>
+
+      <div class="fleet" data-fleet data-specs="{{FLEET_DATA}}">
+        <div class="fleet__stage">
+          <button class="fleet__arrow fleet__arrow--prev" type="button" data-fleet-prev>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 12H5m5-6-6 6 6 6"/></svg>
+            <span class="visually-hidden">Previous vehicle</span>
+          </button>
+
+          <div class="fleet__viewport">
+            <div class="fleet__ellipse" aria-hidden="true"></div>
+            {{FLEET_CARS}}
+          </div>
+
+          <button class="fleet__arrow fleet__arrow--next" type="button" data-fleet-next>
+            {{ICON_ARROW}}
+            <span class="visually-hidden">Next vehicle</span>
+          </button>
+        </div>
+
+        <div class="fleet__caption" aria-live="polite">
+          <h3 class="fleet__name display" data-fleet-name>{{FLEET_NAME}}</h3>
+          <p class="fleet__specs" data-fleet-specs>{{FLEET_SPECS}}</p>
+        </div>
+
+        <div class="fleet__dots" role="group" aria-label="Choose a vehicle">
+          {{FLEET_DOTS}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_3}}
+
+  {{ENQUIRY}}
+
+</main>
+
+{{FOOTER}}
+{{MOBILE_BAR}}
+
+<script src="{{BASE}}assets/js/site.js" defer></script>
+<script src="{{BASE}}assets/js/carousel.js" defer></script>
+<script src="{{BASE}}assets/js/fleet.js" defer></script>
+<script src="{{BASE}}assets/js/enquiry.js" defer></script>
+</body>
+</html>

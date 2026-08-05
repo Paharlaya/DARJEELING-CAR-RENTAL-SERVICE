@@ -1,0 +1,91 @@
+<section class="section section--forest" id="enquire">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Plan your journey</p>
+      <h2 class="section-head__title display">Tell us the dates. We'll do the rest.</h2>
+      <p class="lede">Send this over and we'll come back with a price, a vehicle and a driver. No deposit to ask a question.</p>
+    </div>
+
+    <div class="enquiry__grid">
+      <form class="form" id="enquiry-form" data-wa="{{WA_URL}}" novalidate>
+        <div class="form__rows">
+          <div class="field" data-field="name">
+            <label class="field__label" for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <span class="field__error" data-error-for="name"></span>
+          </div>
+
+          <div class="form__pair">
+            <div class="field" data-field="phone">
+              <label class="field__label" for="f-phone">Phone or WhatsApp</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+              <span class="field__error" data-error-for="phone"></span>
+            </div>
+            <div class="field" data-field="travellers">
+              <label class="field__label" for="f-travellers">Travellers</label>
+              <input id="f-travellers" name="travellers" type="number" min="1" max="20" inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="form__pair">
+            <div class="field" data-field="package">
+              <label class="field__label" for="f-package">Route</label>
+              <select id="f-package" name="package">
+                <option value="">Not sure yet — advise me</option>
+                {{PACKAGE_OPTIONS}}
+              </select>
+            </div>
+            <div class="field" data-field="date">
+              <label class="field__label" for="f-date">Travelling from</label>
+              <input id="f-date" name="date" type="date">
+            </div>
+          </div>
+
+          <div class="field" data-field="message">
+            <label class="field__label" for="f-message">Anything else</label>
+            <textarea id="f-message" name="message" rows="3"
+                      placeholder="Hotels, an extra night somewhere, arrival flight time…"></textarea>
+          </div>
+
+          <button class="btn btn--gold btn--wide" type="submit">
+            {{ICON_WA}} Send on WhatsApp
+          </button>
+          <p class="form__note">This opens WhatsApp with your enquiry written out. Nothing is sent until you press send there.</p>
+        </div>
+      </form>
+
+      <div class="contact-rail">
+        <div class="contact-rail__knot" aria-hidden="true">{{ICON_KNOT}}</div>
+
+        <a class="contact-row" href="tel:{{PHONE}}">
+          {{ICON_PHONE}}
+          <span>
+            <span class="contact-row__label">Call</span>
+            <span class="contact-row__value">{{PHONE_DISPLAY}}</span>
+          </span>
+        </a>
+        <a class="contact-row" href="{{WA_URL}}" target="_blank" rel="noopener">
+          {{ICON_WA}}
+          <span>
+            <span class="contact-row__label">WhatsApp</span>
+            <span class="contact-row__value">{{PHONE_DISPLAY}}</span>
+          </span>
+        </a>
+        <a class="contact-row" href="mailto:{{EMAIL}}">
+          {{ICON_MAIL}}
+          <span>
+            <span class="contact-row__label">Email</span>
+            <span class="contact-row__value">{{EMAIL}}</span>
+          </span>
+        </a>
+        <a class="contact-row" href="{{MAPS_URL}}" target="_blank" rel="noopener">
+          {{ICON_PIN}}
+          <span>
+            <span class="contact-row__label">Find us</span>
+            <span class="contact-row__value">{{ADDRESS_SHORT}}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

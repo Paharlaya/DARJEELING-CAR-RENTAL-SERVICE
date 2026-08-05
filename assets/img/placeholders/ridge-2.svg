@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Himalayan ridgeline">
+  <rect width="1000" height="300" fill="#0C1C14"/>
+  <circle cx="812" cy="72" r="26" fill="none" stroke="#7C643C" stroke-width="1.5"/>
+  <path d="M0 300 L110 210 L210 250 L330 150 L470 235 L600 175 L740 245 L880 190 L1000 300Z" fill="#050C08" opacity="0.55"/>
+  <path d="M0 300 L110 210 L210 250 L330 150 L470 235 L600 175 L740 245 L880 190 L1000 300Z" fill="none" stroke="#C1A063" stroke-width="1.25" opacity="0.5"/>
+  <path d="M0 300 L180 260 L340 290 L500 240 L680 285 L860 245 L1000 300Z" fill="#050C08" opacity="0.9"/>
+  <path d="M0 300 L180 260 L340 290 L500 240 L680 285 L860 245 L1000 300Z" fill="none" stroke="#C1A063" stroke-width="1" opacity="0.32"/>
+</svg>

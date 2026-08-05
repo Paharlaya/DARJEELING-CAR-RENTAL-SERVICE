@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{CODE}} · {{IT_TITLE}} | {{NAME}}</title>
+<meta name="description" content="{{META_DESC}}">
+<meta name="theme-color" content="#050C08">
+<link rel="canonical" href="{{CANONICAL}}">
+<link rel="icon" href="{{BASE}}assets/img/logo.png">
+<link rel="apple-touch-icon" href="{{BASE}}assets/img/logo.png">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{CODE}} · {{IT_TITLE}}">
+<meta property="og:description" content="{{META_DESC}}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="{{BASE}}assets/css/main.css">
+</head>
+<body>
+
+{{HEADER}}
+
+<main id="main">
+
+  <section class="it-hero">
+    <div class="it-hero__img">{{HERO_IMG}}</div>
+    <div class="it-hero__scrim" aria-hidden="true"></div>
+
+    <div class="wrap it-hero__body">
+      <a class="back-link" href="{{BASE}}index.html#routes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 12H5m5-6-6 6 6 6"/></svg>
+        All routes
+      </a>
+      <p class="it-hero__code">{{CODE}} · {{NOTATION}}</p>
+      <h1 class="it-hero__title display">{{IT_TITLE}}</h1>
+      <p class="it-hero__duration">{{DURATION}}</p>
+      {{ROUTE}}
+      <a class="btn btn--gold" href="{{WA_PKG_URL}}" target="_blank" rel="noopener">
+        {{ICON_WA}} Enquire on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  {{TERRACE_1}}
+
+  <!-- The day accordion. The gold spine down the left is the route chain from
+       the cards, turned vertical: one node per day, filled when open. On
+       desktop the image on the right follows whichever day you have open. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The journey</p>
+        <h2 class="section-head__title display">Day by day</h2>
+        <p class="lede">{{SUMMARY}}</p>
+      </div>
+
+      <div class="days" data-days>
+        <ol class="days__list">
+          {{DAYS}}
+        </ol>
+
+        <div class="days__panel">
+          <figure class="days__figure">
+            <div class="days__frame">
+              {{DAY_IMAGES}}
+            </div>
+            <figcaption class="days__caption" data-day-caption>{{DAY_CAPTION}}</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_2}}
+
+  <section class="section section--bone">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What you'll see</p>
+        <h2 class="section-head__title display">Places on this route</h2>
+      </div>
+
+      <ul class="chips">
+        {{CHIPS}}
+      </ul>
+
+      <div class="incl">
+        <div>
+          <h3 class="incl__title">What's included</h3>
+          <ul>
+            {{INCLUDED}}
+          </ul>
+        </div>
+        <div>
+          <h3 class="incl__title">Not included</h3>
+          <ul class="incl__list--no">
+            {{EXCLUDED}}
+          </ul>
+        </div>
+      </div>
+
+      <p class="vehicle-note">
+        <span class="vehicle-note__label">Vehicle</span>
+        <span class="vehicle-note__value">{{VEHICLE}}</span>
+      </p>
+
+      <div class="it-cta">
+        <p class="it-cta__text">Ask us for a price on {{CODE}} — we'll reply with a figure and what's available.</p>
+        <a class="btn btn--gold" href="{{WA_PKG_URL}}" target="_blank" rel="noopener">
+          {{ICON_WA}} Enquire on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_3}}
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Other routes</p>
+        <h2 class="section-head__title display">If this one isn't quite it</h2>
+      </div>
+      <div class="grid-routes">
+        {{RELATED}}
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_4}}
+
+  {{ENQUIRY}}
+
+</main>
+
+{{FOOTER}}
+{{MOBILE_BAR}}
+
+<script src="{{BASE}}assets/js/site.js" defer></script>
+<script src="{{BASE}}assets/js/itinerary.js" defer></script>
+<script src="{{BASE}}assets/js/enquiry.js" defer></script>
+</body>
+</html>

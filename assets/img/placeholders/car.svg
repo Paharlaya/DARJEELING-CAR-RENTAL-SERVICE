@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240" role="img" aria-label="Vehicle silhouette">
+  <path d="M40 176h560" stroke="#7C643C" stroke-width="1.5" fill="none"/>
+  <path d="M92 176c-14 0-24-10-24-24v-22c0-10 6-18 16-21l58-16 30-27c8-7 18-11 28-11h122c12 0 23 5 30 14l24 30 62 12c14 3 24 15 24 29v12c0 10-8 18-18 18z"
+        fill="none" stroke="#C1A063" stroke-width="1.75" opacity="0.85"/>
+  <path d="M162 108l24-22c5-5 12-8 19-8h96c8 0 15 3 20 10l17 20z" fill="none" stroke="#C1A063" stroke-width="1.25" opacity="0.5"/>
+  <circle cx="176" cy="176" r="30" fill="#050C08" stroke="#C1A063" stroke-width="1.75"/>
+  <circle cx="452" cy="176" r="30" fill="#050C08" stroke="#C1A063" stroke-width="1.75"/>
+  <circle cx="176" cy="176" r="12" fill="none" stroke="#7C643C" stroke-width="1.25"/>
+  <circle cx="452" cy="176" r="12" fill="none" stroke="#7C643C" stroke-width="1.25"/>
+</svg>
