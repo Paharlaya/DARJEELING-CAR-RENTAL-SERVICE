@@ -3,3 +3,16 @@
 
 # Local editor / tool state
 .claude/settings.local.json
+
+# Photo masters — tools/prep-images.sh converts these to .jpg, which is what
+# ships. Keep the originals locally without bloating the repo.
+# (.png is NOT ignored — the fleet vehicles are transparent PNGs.)
+assets/img/**/*.avif
+assets/img/**/*.heic
+assets/img/**/*.heif
+assets/img/**/*.tif
+assets/img/**/*.tiff
+assets/img/**/*.webp
+
+# Photos set aside for review — kept locally, not shipped
+assets/img/**/_parked-*

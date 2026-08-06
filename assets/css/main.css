@@ -1107,7 +1107,9 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
 .days__figure { margin: 0; }
 .days__frame {
   position: relative;
-  aspect-ratio: 4 / 5;
+  /* 4:3 rather than portrait: the photography is landscape, and a portrait
+     crop cut the sides off wide shots like Tsomgo (16:9). */
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--rule-gold-lo);

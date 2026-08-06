@@ -47,6 +47,29 @@ packages.forEach((p, i) => (FILE[p.code] = pageFile(p, i)));
 const DISPLAY = {};
 packages.forEach((p, i) => (DISPLAY[p.code] = `PKG-${String(i + 1).padStart(2, "0")}`));
 
+/* -- real photos take precedence over the stand-ins --------------------- */
+
+/**
+ * Drop a photo at the conventional path and it is used automatically:
+ *   assets/img/routes/<slug>.jpg   for a package card + its page hero
+ *   assets/img/days/<key>.jpg      for a day panel
+ * Until then the `img` field in itineraries.json applies. See IMAGES.md.
+ * Remember to update that entry's imgCaption and alt to match the new photo —
+ * captions describe the photograph, not the day.
+ */
+const IMG_EXT = [".jpg", ".jpeg", ".png", ".webp"];
+function preferred(dir, name, fallback) {
+  for (const ext of IMG_EXT) {
+    const rel = `assets/img/${dir}/${name}${ext}`;
+    if (fs.existsSync(path.join(ROOT, rel))) return rel;
+  }
+  return fallback;
+}
+packages.forEach((p) => (p.img = preferred("routes", p.slug, p.img)));
+Object.keys(dayLibrary).forEach(
+  (k) => (dayLibrary[k].img = preferred("days", k, dayLibrary[k].img))
+);
+
 /* -- helpers ------------------------------------------------------------- */
 
 const esc = (s) =>
