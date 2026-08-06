@@ -356,7 +356,7 @@ button {
 }
 .header.is-scrolled .header__inner { height: var(--header-h-sm); }
 
-.brand { display: flex; align-items: center; gap: 0.85rem; }
+.brand { display: flex; align-items: center; gap: 0.85rem; min-width: 0; }
 .brand__mark {
   width: auto;
   height: 4.25rem;
@@ -1284,9 +1284,24 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
   .hero__actions .btn { width: 100%; }
 }
 
+/* On a phone the contact pills are gone, so the row is just logo + name and
+   there is room. It wraps at the tsheg marks rather than overflowing, and the
+   header grows to fit instead of clipping. */
 @media (max-width: 560px) {
-  /* Below this the logo alone fills the row */
-  .brand__bo { display: none; }
+  .header__inner {
+    height: auto;
+    min-height: var(--header-h);
+    padding-block: 0.5rem;
+  }
+  .header.is-scrolled .header__inner {
+    height: auto;
+    min-height: var(--header-h-sm);
+  }
+  .brand__bo {
+    font-size: 0.78rem;
+    line-height: 1.75;
+    white-space: normal;
+  }
 }
 
 @media (max-width: 380px) {
