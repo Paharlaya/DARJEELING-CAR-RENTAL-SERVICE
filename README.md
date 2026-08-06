@@ -54,37 +54,33 @@ reason instead of publishing something wrong.
 
 ---
 
-## Adding real photos
+## Photos
 
-Every image currently points at one of the five photos in `assets/img/hero/`.
-To use a real photo, drop the file in and point the relevant `img` field at it.
+Current status and what is still wanted: **[`IMAGES.md`](IMAGES.md)**.
 
-| Field | Used for | Wanted |
-|---|---|---|
-| `hero.slides[].img` | homepage carousel | landscape, **≥2000px wide** |
-| `packages[].img` | route card + that page's hero | landscape, ≥1200px wide |
-| `dayLibrary.*.img` | the accordion image panel | landscape, ≥1200px wide |
-| `fleet[].img` | turntable | **transparent PNG**, ≥1200px wide |
+To add or replace one, name the file to match its slot and drop it in
+`assets/img/days/` or `assets/img/routes/`, then:
 
-Two things worth knowing:
+```sh
+./tools/prep-images.sh   # avif/heic/webp -> jpg, warns on crops and low res
+node build.js
+```
 
-- **The current hero photos are only 900px wide.** They look soft on a desktop
-  full-bleed hero. Replacing them with ≥2000px versions is the single biggest
-  visual upgrade available.
-- **When you change an image, change its `imgCaption` and `alt` to match.**
-  The captions describe the actual photograph, not the day — so a photo of
-  Batasia Loop is never captioned as somewhere it isn't.
+A correctly named file is picked up with no JSON edit. **Update that entry's
+`imgCaption` and `alt` with it** — captions describe the photograph, not the
+day, which is what stops a Batasia Loop photo being labelled as somewhere it
+isn't.
 
-If an image path is ever wrong or missing, the page falls back to generated
-ridgeline artwork in the brand palette rather than a broken-image icon.
+If a path is ever wrong, the page falls back to generated ridgeline artwork in
+the brand palette rather than a broken-image icon.
 
 ### Fleet PNGs
 
-The six vehicle PNGs were cropped to the car and composited onto a common
-900×520 transparent canvas, so all six sit at consistent visual weight on the
-turntable. If you add a vehicle, match that: transparent background, car
-bottom-aligned, same canvas. The Swift Dzire came in at 301px wide and was
-upscaled — a larger source file would sharpen it up.
+The six vehicles were cropped to the car and composited onto a common 900×520
+transparent canvas so they sit at consistent visual weight on the turntable.
+Match that if you add one. The Swift Dzire came in at 301px and was upscaled —
+a larger source would sharpen it.
+
 
 ---
 
@@ -199,12 +195,18 @@ Paint.
 
 ---
 
-## Before launch
+## Live
 
-- [ ] Set `business.email` — it is still `PLACEHOLDER@example.com`
-- [ ] Replace the five hero photos with ≥2000px versions
-- [ ] Send a test enquiry from a phone and confirm it reaches your WhatsApp
-- [ ] Add real photos for the days and routes as they come in
+**https://darjeelingcarrentalservice.com** — pushing to `main` deploys, which
+takes about 3–6 minutes.
+
+Remaining, both cosmetic:
+
+- [ ] `assets/img/routes/gp-06.jpg` — a Pelling photo. The one supplied was
+      Everest from Tibet, so it is parked and that card falls back to the
+      Ravangla Buddha, which is genuinely on the route
+- [ ] Submit `sitemap.xml` in Google Search Console once the domain is verified
+
 
 ---
 
