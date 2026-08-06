@@ -6,20 +6,29 @@
 <title>{{IT_TITLE}} ({{CODE}}) | {{NAME}}</title>
 <meta name="description" content="{{META_DESC}}">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="canonical" href="{{CANONICAL}}">
-<link rel="icon" href="{{BASE}}assets/img/logo.png">
-<link rel="apple-touch-icon" href="{{BASE}}assets/img/logo.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{{CANONICAL_ABS}}">
+{{ICONS}}
 
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="{{NAME}}">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="{{OG_URL}}">
 <meta property="og:title" content="{{IT_TITLE}} ({{CODE}})">
 <meta property="og:description" content="{{META_DESC}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{OG_IMAGE}}">
+
+{{PRELOAD}}
 
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Tibetan:wght@500&display=swap">
 <link rel="stylesheet" href="{{BASE}}assets/css/main.css">
+
+{{SCHEMA}}
 </head>
 <body>
 
@@ -32,10 +41,7 @@
     <div class="it-hero__scrim" aria-hidden="true"></div>
 
     <div class="wrap it-hero__body">
-      <a class="back-link" href="{{BASE}}index.html#routes">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 12H5m5-6-6 6 6 6"/></svg>
-        All routes
-      </a>
+      {{BREADCRUMB}}
       <p class="it-hero__code">{{CODE}} · {{NOTATION}}</p>
       <h1 class="it-hero__title display">{{IT_TITLE}}</h1>
       <p class="it-hero__duration">{{DURATION}}</p>

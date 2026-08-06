@@ -77,6 +77,50 @@ const esc = (s) =>
 
 const read = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
 
+/* -- absolute URLs ------------------------------------------------------ */
+/* Canonicals, sitemap entries and social previews must be absolute — a
+   relative og:image simply does not resolve when WhatsApp or Google fetches
+   it. Everything derives from business.siteUrl. */
+const SITE = String(biz.siteUrl || "").replace(/\/+$/, "");
+const abs = (rel) => `${SITE}/${String(rel).replace(/^\/+/, "")}`;
+
+/* -- intrinsic image dimensions ----------------------------------------- */
+/**
+ * Reads width/height straight out of the file header so every <img> can carry
+ * them. Without these the browser cannot reserve space before the image
+ * arrives, and the page jumps as each one loads — the single biggest source
+ * of layout shift, which Google measures.
+ */
+const sizeCache = new Map();
+function imageSize(rel) {
+  if (sizeCache.has(rel)) return sizeCache.get(rel);
+  let out = null;
+  try {
+    const buf = fs.readFileSync(path.join(ROOT, rel));
+    if (buf.length > 24 && buf.readUInt32BE(0) === 0x89504e47) {
+      out = { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) }; // PNG IHDR
+    } else if (buf[0] === 0xff && buf[1] === 0xd8) {
+      let i = 2;
+      while (i < buf.length - 9) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const m = buf[i + 1];
+        if (m === 0xd8 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+        const len = buf.readUInt16BE(i + 2);
+        // SOF0–SOF15, excluding DHT (c4), JPGA (c8) and DAC (cc)
+        if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+          out = { h: buf.readUInt16BE(i + 5), w: buf.readUInt16BE(i + 7) };
+          break;
+        }
+        i += 2 + len;
+      }
+    }
+  } catch (e) {
+    out = null;
+  }
+  sizeCache.set(rel, out);
+  return out;
+}
+
 /** Deterministic placeholder so a missing photo degrades to brand art,
  *  not a broken-image icon. Drop the real file in and it lights up. */
 const PLACEHOLDERS = 6;
@@ -88,8 +132,10 @@ function placeholderFor(key) {
 
 function img({ src, alt, base = "", cls = "", eager = false, ph }) {
   const fallback = `${base}assets/img/placeholders/${ph || placeholderFor(src)}.svg`;
+  const dim = imageSize(src);
   return (
     `<img src="${base}${src}" alt="${esc(alt || "")}"` +
+    (dim ? ` width="${dim.w}" height="${dim.h}"` : "") +
     (cls ? ` class="${cls}"` : "") +
     (eager ? ` loading="eager" fetchpriority="high"` : ` loading="lazy"`) +
     ` decoding="async"` +
@@ -253,6 +299,12 @@ function fill(tpl, vars) {
 function commonVars(base) {
   return {
     BASE: base,
+    SITE_URL: abs(""),
+    ICONS:
+      `<link rel="icon" href="${base}assets/img/favicon-32.png" sizes="32x32" type="image/png">\n` +
+      `<link rel="icon" href="${base}assets/img/logo.png" sizes="any" type="image/png">\n` +
+      `<link rel="apple-touch-icon" href="${base}assets/img/apple-touch-icon.png">\n` +
+      `<link rel="manifest" href="${base}site.webmanifest">`,
     PHONE: biz.phone,
     PHONE_DISPLAY: esc(biz.phoneDisplay),
     WA_URL: WA_GENERAL,
@@ -328,6 +380,145 @@ function writePlaceholders() {
   return ridges.length + 1;
 }
 
+/* -- structured data ---------------------------------------------------- */
+/* Written as real JSON so it cannot drift out of sync with the content, and
+   so a stray quote in a title cannot produce invalid markup. */
+
+const ld = (obj) => `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2)}\n</script>`;
+
+const ORG = {
+  "@type": "TaxiService",
+  "@id": abs("#business"),
+  name: `${biz.name} — ${biz.subName}`,
+  url: abs(""),
+  telephone: biz.phone,
+  email: biz.email,
+  image: abs("assets/img/logo.png"),
+  logo: abs("assets/img/logo.png"),
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Victoria Rd, Chauk Bazaar",
+    addressLocality: "Darjeeling",
+    addressRegion: "West Bengal",
+    postalCode: "734101",
+    addressCountry: "IN",
+  },
+  areaServed: ["Darjeeling", "Gangtok", "Pelling", "Lachung", "Kalimpong", "Sikkim", "West Bengal"],
+  availableLanguage: ["en", "hi", "ne", "bo"],
+};
+
+function schemaHome() {
+  return ld({
+    "@context": "https://schema.org",
+    "@graph": [
+      { ...ORG, hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Tour routes",
+          itemListElement: packages.map((p, i) => ({
+            "@type": "Offer",
+            position: i + 1,
+            itemOffered: { "@type": "TouristTrip", name: p.title, url: abs(`itineraries/${FILE[p.code]}`) },
+          })),
+        } },
+      {
+        "@type": "WebSite",
+        "@id": abs("#website"),
+        url: abs(""),
+        name: `${biz.name} — ${biz.subName}`,
+        inLanguage: "en",
+        publisher: { "@id": abs("#business") },
+      },
+    ],
+  });
+}
+
+function schemaItinerary(p, days) {
+  return ld({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristTrip",
+        name: `${p.title} (${DISPLAY[p.code]})`,
+        description: p.metaDescription,
+        url: abs(`itineraries/${FILE[p.code]}`),
+        image: abs(p.img),
+        inLanguage: "en",
+        // ISO 8601: a 6-night / 7-day trip is P7D
+        subjectOf: { "@type": "CreativeWork", name: `${p.nights} nights, ${p.days} days` },
+        itinerary: {
+          "@type": "ItemList",
+          numberOfItems: p.places.length,
+          itemListElement: p.places.map((place, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: { "@type": "Place", name: place },
+          })),
+        },
+        provider: { "@id": abs("#business") },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: abs("") },
+          { "@type": "ListItem", position: 2, name: "Routes", item: abs("#routes") },
+          { "@type": "ListItem", position: 3, name: `${DISPLAY[p.code]} · ${p.title}` },
+        ],
+      },
+      ORG,
+    ],
+  });
+}
+
+/* -- generated files: sitemap, robots, manifest, 404 -------------------- */
+
+function writeSitemap(urls) {
+  const today = new Date().toISOString().slice(0, 10);
+  const body = urls
+    .map(
+      ({ loc, priority, changefreq }) =>
+        `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n` +
+        `    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+    )
+    .join("\n");
+  fs.writeFileSync(
+    path.join(ROOT, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`
+  );
+}
+
+function writeRobots() {
+  fs.writeFileSync(
+    path.join(ROOT, "robots.txt"),
+    `User-agent: *\nAllow: /\n\n# Build artefacts and source — no value in the index\nDisallow: /templates/\nDisallow: /partials/\nDisallow: /tools/\n\nSitemap: ${abs("sitemap.xml")}\n`
+  );
+}
+
+function writeManifest() {
+  fs.writeFileSync(
+    path.join(ROOT, "site.webmanifest"),
+    JSON.stringify(
+      {
+        name: `${biz.name} — ${biz.subName}`,
+        short_name: biz.subName,
+        description: "Private car and driver across Darjeeling and Sikkim.",
+        start_url: "./index.html",
+        scope: "./",
+        display: "standalone",
+        background_color: "#FFFFFF",
+        theme_color: "#FFFFFF",
+        icons: [
+          { src: "assets/img/icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "assets/img/icon-512.png", sizes: "512x512", type: "image/png" },
+          { src: "assets/img/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any maskable" },
+        ],
+      },
+      null,
+      2
+    ) + "\n"
+  );
+}
+
 /* -- pages ------------------------------------------------------------- */
 
 function buildIndex(partials) {
@@ -388,6 +579,13 @@ function buildIndex(partials) {
     TERRACE_1: terrace("white", 0),
     TERRACE_2: terrace("white", 1),
     TERRACE_3: terrace("white", 2),
+    CANONICAL_ABS: abs(""),
+    OG_URL: abs(""),
+    OG_IMAGE: abs(hero.slides[0].img),
+    SCHEMA: schemaHome(),
+    // The first slide is the largest thing above the fold; preloading it is
+    // the difference between a fast and a slow Largest Contentful Paint.
+    PRELOAD: `<link rel="preload" as="image" href="${base}${hero.slides[0].img}" fetchpriority="high">`,
   });
 
   fs.writeFileSync(path.join(ROOT, "index.html"), html);
@@ -436,11 +634,37 @@ function buildItinerary(p, partials) {
     TERRACE_2: terrace("white", 2),
     TERRACE_3: terrace("white", 0),
     TERRACE_4: terrace("white", 1),
+    CANONICAL_ABS: abs(`itineraries/${FILE[p.code]}`),
+    OG_URL: abs(`itineraries/${FILE[p.code]}`),
+    OG_IMAGE: abs(p.img),
+    SCHEMA: schemaItinerary(p, days),
+    PRELOAD: `<link rel="preload" as="image" href="${base}${p.img}" fetchpriority="high">`,
+    BREADCRUMB:
+      `<nav class="crumbs" aria-label="Breadcrumb">` +
+      `<a href="${base}index.html">Home</a>` +
+      `<span aria-hidden="true">/</span>` +
+      `<a href="${base}index.html#routes">Routes</a>` +
+      `<span aria-hidden="true">/</span>` +
+      `<span aria-current="page">${DISPLAY[p.code]}</span>` +
+      `</nav>`,
   });
 
   const file = FILE[p.code];
   fs.writeFileSync(path.join(ROOT, "itineraries", file), html);
   return `itineraries/${file}`;
+}
+
+/** GitHub Pages serves 404.html for any unknown path, so it must live at the
+ *  repo root and use root-relative asset paths. */
+function build404(partials) {
+  const html = fill(read("templates/404.html"), {
+    ...commonVars(""),
+    ...partials,
+    CARDS: packages.map((p) => card(p, "")).join("\n"),
+    TERRACE_1: terrace("white", 2),
+  });
+  fs.writeFileSync(path.join(ROOT, "404.html"), html);
+  return "404.html";
 }
 
 /** The enquiry partial needs the package pre-selected on itinerary pages. */
@@ -489,6 +713,28 @@ function main() {
       })
     );
   }
+
+  written.push(
+    build404({
+      HEADER: fill(rawHeader, commonVars("")),
+      FOOTER: fill(rawFooter, commonVars("")),
+      MOBILE_BAR: fill(rawBar, commonVars("")),
+    })
+  );
+
+  // Sitemap: homepage first, then routes in ladder order. 404 is excluded —
+  // it is noindex, and listing it would be contradictory.
+  writeSitemap([
+    { loc: abs(""), priority: "1.0", changefreq: "weekly" },
+    ...packages.map((p) => ({
+      loc: abs(`itineraries/${FILE[p.code]}`),
+      priority: "0.8",
+      changefreq: "monthly",
+    })),
+  ]);
+  writeRobots();
+  writeManifest();
+  written.push("sitemap.xml", "robots.txt", "site.webmanifest");
 
   // Leftover tokens are a build bug, not a runtime surprise — catch them here.
   let leaks = 0;

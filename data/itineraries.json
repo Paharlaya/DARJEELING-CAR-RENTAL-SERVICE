@@ -1,6 +1,8 @@
 {
   "business": {
     "name": "Darjeeling Car Rental Service",
+    "siteUrl": "https://darjeelingcarrentalservice.com/",
+    "siteUrlNote": "Absolute base for canonicals, sitemap and social previews. If the domain ever changes, edit this one value and run node build.js.",
     "subName": "Khangri Karpoo",
     "whatsapp": "919306220309",
     "phone": "+919306220309",
@@ -102,9 +104,9 @@
   "dayLibrary": {
     "arrive-gangtok": {
       "title": "Bagdogra / NJP → Gangtok",
-      "img": "assets/img/hero/05.jpg",
-      "imgCaption": "Himalayan temple architecture",
-      "alt": "A traditional timber Himalayan temple complex below a ridge of snow-covered peaks",
+      "img": "assets/img/days/gangtok-to-darjeeling.jpg",
+      "imgCaption": "The Tista, on the road up",
+      "alt": "The wide Tista river running between green hills with the highway alongside",
       "body": [
         "We meet you at Bagdogra Airport or New Jalpaiguri station and head north. The road follows the Tista almost the whole way — river on one side, terraced hillside on the other — and climbs steadily out of the plains into Sikkim.",
         "You'll reach Gangtok in the late afternoon. After check-in the evening is yours; M.G. Marg is pedestrianised, lined with cafés, and a ten-minute walk from most hotels in town."

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Build artefacts and source — no value in the index
+Disallow: /templates/
+Disallow: /partials/
+Disallow: /tools/
+
+Sitemap: https://darjeelingcarrentalservice.com/sitemap.xml

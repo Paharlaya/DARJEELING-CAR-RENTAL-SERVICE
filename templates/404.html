@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | {{NAME}}</title>
+<meta name="description" content="That page could not be found. Browse our tour routes across Darjeeling and Sikkim, or message us on WhatsApp.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FFFFFF">
+{{ICONS}}
+
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Tibetan:wght@500&display=swap">
+<link rel="stylesheet" href="{{BASE}}assets/css/main.css">
+</head>
+<body>
+
+{{HEADER}}
+
+<main id="main">
+  <section class="section notfound">
+    <div class="wrap">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="notfound__title display">This road doesn't go anywhere.</h1>
+      <p class="lede">The page you were after has moved or never existed. The routes below are all still running.</p>
+      <div class="hero__actions">
+        <a class="btn btn--gold" href="{{WA_URL}}" target="_blank" rel="noopener">{{ICON_WA}} WhatsApp us</a>
+        <a class="btn" href="{{BASE}}index.html#routes">See all routes</a>
+      </div>
+    </div>
+  </section>
+
+  {{TERRACE_1}}
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Our routes</p>
+        <h2 class="section-head__title display">Multiple itineraries, four to seven days.</h2>
+      </div>
+      <div class="grid-routes">
+        {{CARDS}}
+      </div>
+    </div>
+  </section>
+</main>
+
+{{FOOTER}}
+{{MOBILE_BAR}}
+
+<script src="{{BASE}}assets/js/site.js" defer></script>
+</body>
+</html>

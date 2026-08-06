@@ -6,15 +6,22 @@
 <title>{{NAME}} — {{SUB_NAME}} | Taxi &amp; tour packages, Darjeeling &amp; Sikkim</title>
 <meta name="description" content="Private car and driver across Darjeeling and Sikkim. Tour routes of four to seven days — Gangtok, Pelling, Lachung, Kalimpong, Tsomgo Lake and Tiger Hill at sunrise. WhatsApp us for a price.">
 <meta name="theme-color" content="#FFFFFF">
-<link rel="canonical" href="index.html">
-<link rel="icon" href="{{BASE}}assets/img/logo.png">
-<link rel="apple-touch-icon" href="{{BASE}}assets/img/logo.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{{CANONICAL_ABS}}">
+{{ICONS}}
 
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="{{NAME}}">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="{{OG_URL}}">
 <meta property="og:title" content="{{NAME}} — {{SUB_NAME}}">
 <meta property="og:description" content="Private car and driver across Darjeeling and Sikkim, on routes we drive the year round.">
-<meta property="og:image" content="{{BASE}}assets/img/hero/01.jpg">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:image:alt" content="Darjeeling town at sunrise with the Khangchendzonga range on the horizon">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{OG_IMAGE}}">
+
+{{PRELOAD}}
 
 <script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,25 +29,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Tibetan:wght@500&display=swap">
 <link rel="stylesheet" href="{{BASE}}assets/css/main.css">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TaxiService",
-  "name": "{{NAME}} — {{SUB_NAME}}",
-  "telephone": "{{PHONE}}",
-  "email": "{{EMAIL}}",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Victoria Rd, Chauk Bazaar",
-    "addressLocality": "Darjeeling",
-    "addressRegion": "West Bengal",
-    "postalCode": "734101",
-    "addressCountry": "IN"
-  },
-  "areaServed": ["Darjeeling", "Gangtok", "Pelling", "Lachung", "Kalimpong", "Sikkim"],
-  "image": "{{BASE}}assets/img/logo.png"
-}
-</script>
+{{SCHEMA}}
 </head>
 <body>
 

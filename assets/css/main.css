@@ -983,6 +983,33 @@ a.contact-row:hover .contact-row__value { color: var(--gold-deep); }
 }
 .it-hero .btn--gold:hover { background: var(--gold-hi); border-color: var(--gold-hi); }
 
+/* Breadcrumb — wayfinding, and it backs the BreadcrumbList schema that
+   Google renders beneath the search result. */
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-family: var(--data);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.crumbs a { transition: color 0.25s var(--ease); }
+.crumbs a:hover { color: var(--gold-hi); }
+.crumbs span[aria-hidden] { color: var(--gold); opacity: 0.65; }
+.crumbs [aria-current="page"] { color: var(--gold-hi); }
+
+.notfound { padding-block: clamp(5rem, 12vw, 9rem); }
+.notfound__title {
+  font-size: var(--fs-3xl);
+  margin-block: 1rem 1.25rem;
+  max-width: 18ch;
+}
+.notfound .hero__actions { margin-top: 2rem; }
+
 .back-link {
   display: inline-flex;
   align-items: center;
